@@ -51,7 +51,7 @@ Q: I think I ran into a bug, how do I report it?
 A: Please, create a new issue in this repo and attach %localappdata%\Microsoft\VisualStudio\LAI_Log{date}.log.
 
 ## Known issues
-- IntelliCode loves to think that he's smart and to override suggestions from this extension from time to time.
+- IntelliCode loves to think that it's smart and to override suggestions from this extension from time to time.
 - Code is not formatted in the suggestion.
 
 
