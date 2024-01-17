@@ -35,6 +35,10 @@ My instance ran on RTX 3090 in CUDA mode, I highly advise renting compute time, 
 
 ## Usage
 Start your Visual Studio and start typing. It follows the same rules as IntelliCode.
+#### Hotkeys:
+[Alt+A] Manual generation request.\
+[Alt+S] Insert code from manual generation.
+
 
 ## Q&A
 Q: Why can't I install it?\
@@ -56,7 +60,6 @@ A: Please, create a new issue in this repo and attach %localappdata%\Microsoft\V
 - IntelliCode loves to think that it's smart and to override suggestions from this extension from time to time.
 - Code is not formatted in the suggestion.
 
-
 ## Contributing
 Please, report any encountered issues in this repository.
 
@@ -66,3 +69,9 @@ Please, report any encountered issues in this repository.
 - Fixed multiline generation issue. Multiline is now a default option;
 - Improved API requests to accommodate generation canceling;
 - Competition requests are now delayed to not overwhelm the API (configurable in settings);
+
+### v1.2.2
+- Added pane to display manual generations in output.
+- Added interactivity to keep users posted about the connection status.\
+![connection_status.jpg](https://github.com/cntseesharp/L.AI/blob/main/images/connection_status.jpg?raw=true)
+![connection_status.jpg](https://github.com/cntseesharp/L.AI/blob/main/images/output_pane.jpg?raw=true)
