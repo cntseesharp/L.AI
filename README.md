@@ -1,8 +1,10 @@
 # L.AI
-TL;DR: Host your own AI autocomplete in Visual Studio.
+
+TL;DR: Host your own AI autocomplete in Visual Studio. 
+#### Only supports KoboldCpp and KoboldAI, support for different platforms is not guaranteed.
 
 Visual Studio plugin that adds functionality to use your own AI suggestion and autocomplete provider.
-The idea came about after trying out several big language models for generating C# code. One of my concerns with AI autocompletion services always was making sure my code wasn't put at risk where others could misuse or leak it. And here is the solution for it.
+The idea came about after trying out several big language models for generating C# code. One of my concerns with AI autocompletion services always was making sure my code wasn't put at risk where others could misuse or leak it. And here is the solution to it.
 
 # Examples
 
@@ -12,7 +14,7 @@ Singleline\
 Multiline\
 ![](https://github.com/cntseesharp/L.AI/blob/main/images/generation_example_2.jpg?raw=true)
 
-# What does L.AI stands for?
+# What does L.AI stand for?
 L.AI simply means LocalAI
 
 ## Installation
@@ -32,7 +34,7 @@ My instance ran on RTX 3090 in CUDA mode, I highly advise renting compute time, 
 
 
 ## Usage
-Start your Visual Studio and start typing. It follow the same rules at IntelliCode.
+Start your Visual Studio and start typing. It follows the same rules as IntelliCode.
 
 ## Q&A
 Q: Why can't I install it?\
@@ -57,3 +59,10 @@ A: Please, create a new issue in this repo and attach %localappdata%\Microsoft\V
 
 ## Contributing
 Please, report any encountered issues in this repository.
+
+## Changelog
+### v1.2.1
+- Fixed code being trimmed on accepting the suggestion;
+- Fixed multiline generation issue. Multiline is now a default option;
+- Improved API requests to accommodate generation canceling;
+- Competition requests are now delayed to not overwhelm the API (configurable in settings);
