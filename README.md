@@ -6,6 +6,8 @@ TL;DR: Host your own AI autocomplete in Visual Studio.
 Visual Studio plugin that adds functionality to use your own AI suggestion and autocomplete provider.
 The idea came about after trying out several big language models for generating C# code. One of my concerns with AI autocompletion services always was making sure my code wasn't put at risk where others could misuse or leak it. And here is the solution to it.
 
+##### Now works with IntelliCode disabled.
+
 # Examples
 
 Singleline\
@@ -36,9 +38,9 @@ My instance ran on RTX 3090 in CUDA mode, I highly advise renting compute time, 
 ## Usage
 Start your Visual Studio and start typing. It follows the same rules as IntelliCode.
 #### Hotkeys:
-[Alt+A] Manual generation request.\
-[Alt+S] Insert code from manual generation.
-
+[Alt+A] Generate code suggestion.\
+[Alt+Z] Generate single-line code suggestion.\
+[Alt+S] Show the last suggestion.
 
 ## Q&A
 Q: Why can't I install it?\
@@ -75,3 +77,9 @@ Please, report any encountered issues in this repository.
 - Added interactivity to keep users posted about the connection status.\
 ![connection_status.jpg](https://github.com/cntseesharp/L.AI/blob/main/images/connection_status.jpg?raw=true)
 ![connection_status.jpg](https://github.com/cntseesharp/L.AI/blob/main/images/output_pane.jpg?raw=true)
+
+### v1.3.1
+- Added functionality to override VS suggestions completely. Now can work without IntelliCode enabled.
+- Added option to disable automated suggestion generation
+- Added a new command to generate a single-line suggestion
+- Reworked Generate and Insert logic, which now generates a suggestion instead of pasting it into the document. Suggestions generated from the commands are now automatically shown as the "ghost code"
