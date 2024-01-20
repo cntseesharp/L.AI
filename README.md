@@ -30,10 +30,10 @@ This is a quick guide for setting up KoboldCpp and DeepSeek Coder model.
 My instance ran on RTX 3090 in CUDA mode, I highly advise renting compute time, if your machine struggles with LLM Inference at an acceptable rate, since suggestion generation time is gonna hurt your experience.
 
 1. Download and setup [KoboldCpp](https://github.com/LostRuins/koboldcpp). Extension tested on version 1.54;
-2. Download any GGUF quantized coding model that was trained in instruct mode from [HuggingFace](https://huggingface.co/).\ 
-I recommend: [DeepSeek Coder GGUF](https://huggingface.co/TheBloke/deepseek-coder-6.7B-base-GGUF), it shows a decent result, but requires at least 12 GB of VRAM in 8-bit quantization mode with 4096 context length. You're looking for [deepseek-coder-6.7b-instruct.Q8_0.gguf](https://huggingface.co/TheBloke/deepseek-coder-6.7B-instruct-GGUF/resolve/main/deepseek-coder-6.7b-instruct.Q8_0.gguf?download=true) (7.2 GB of disk space);\
+2. Download any GGUF quantized coding model that was trained in instruct mode from [HuggingFace](https://huggingface.co/).\
+I recommend: [DeepSeek Coder GGUF](https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct), it shows a decent result, but requires at least 12 GB of VRAM in 8-bit quantization mode with 4096 context length. You're looking for [deepseek-coder-6.7b-instruct.Q8_0.gguf](https://huggingface.co/TheBloke/deepseek-coder-6.7B-instruct-GGUF/resolve/main/deepseek-coder-6.7b-instruct.Q8_0.gguf?download=true) (7.2 GB of disk space);\
 If you opt-out for a different model - please, check if it was trained for code insertion. DeepSeek Coder has 3 special tokens for that: <｜fim▁begin｜>, <｜fim▁hole｜> and <｜fim▁end｜>;
-3. Launch KoboldCpp and select your model, don't forget to set the correct Context Size, 4096 should be enough;
+3. Launch KoboldCpp and select your model, don't forget to set the correct Context Size, 4096 should be enough;\
 ![](https://github.com/cntseesharp/L.AI/blob/main/images/kobold_example.jpg?raw=true)
 
 
