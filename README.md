@@ -95,3 +95,6 @@ When you make a manual generation request and "Use analyzer" is enabled in the o
 - Added toolbar buttons to indicate status and for quick access to the settings.
 - Refactoring for better performance
 - Added tokenizer and on KoboldCpp using its own tokenizer so it only adds to the prompt code that won't "push out" the main part of the prompt.
+
+### v1.5.1
+- Fixed small issue that didn't change indicator color on failed connection.
