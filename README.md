@@ -1,7 +1,7 @@
 # L.AI
 
 TL;DR: Host your own AI autocomplete in Visual Studio. 
-#### Only supports KoboldCpp and KoboldAI, support for different platforms is not guaranteed.
+#### Only supports KoboldCpp/KoboldAI and OogaBooga, support for other APIs.
 
 Visual Studio plugin that adds functionality to use your own AI suggestion and autocomplete provider.
 The idea came about after trying out several big language models for generating C# code. One of my concerns with AI autocompletion services always was making sure my code wasn't put at risk where others could misuse or leak it. And here is the solution to it.
