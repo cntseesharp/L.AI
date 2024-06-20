@@ -12,7 +12,7 @@ The idea came about after trying out several big language models for generating 
 - Uses VS suggestion mechanism to provide "Tab to accept" from your local AI backend.
 - Adds references (Classes, Interfaces, Enums, Records, Structs) from your code to the generation prompt to give LLM a better understanding of your code (C# only).
 - Built-in tokenizer and KoboldCpp tokenizers to keep generation prompt from "pushing out" your code out of context when adding the references.
-- Hotkeys for manual generation requests and to force VS to show the suggestion again if you clicked away and your suggestion is gone.
+- Hotkeys for manual generation requests and to force VS to show the suggestion again if you click away and your suggestion is gone.
 
 # Examples
 
@@ -64,7 +64,7 @@ Q: I think I ran into a bug, how do I report it?\
 A: Please, create a new issue in this repo and attach %localappdata%\Microsoft\VisualStudio\LAI_Log{date}.log
 
 ## Known issues
-- IntelliCode loves to think that it's smart and to override suggestions from this extension from time to time. But now you can disable it completely and keep the functionality of the extension.
+- IntelliCode loves to think that it's smart and to override suggestions from this extension from time to time. But now you can disable it completely and keep the extension's functionality.
 
 ## Contributing
 Please, report any encountered issues in this repository.
@@ -86,15 +86,21 @@ Please, report any encountered issues in this repository.
 - Added functionality to override VS suggestions completely. Now can work without IntelliCode enabled.
 - Added option to disable automated suggestion generation
 - Added a new command to generate a single-line suggestion
-- Reworked Generate and Insert logic, which now generates a suggestion instead of pasting it into the document. Suggestions generated from the commands are now automatically shown as the "ghost code"
+- Reworked the Generate and Insert logic, which now generates a suggestion instead of pasting it into the document. Suggestions generated from the commands are now automatically shown as the "ghost code"
 
 ### v1.5
 - Added an option to include reference types in the generation prompt. This only applies to commands (hotkeys).
 What it means is:\
 When you make a manual generation request and "Use analyzer" is enabled in the options - the analyzer will lookup all references in the current file (Classes, Interfaces, Enums, Records, Structs) and append their source code at the end of the prompt, giving your LLM more context about your code, and supposedly it will improve the code generation.
-- Added toolbar buttons to indicate status and for quick access to the settings.
+- Added toolbar buttons to indicate status and provide quick access to the settings.
 - Refactoring for better performance
 - Added tokenizer and on KoboldCpp using its own tokenizer so it only adds to the prompt code that won't "push out" the main part of the prompt.
 
 ### v1.5.1
-- Fixed small issue that didn't change indicator color on failed connection.
+- Fixed a small issue that didn't change the indicator color on a failed connection.
+
+### v1.6.0
+- Reworked the way suggestions are generated.
+- Fixed an issue that prevented the extension to reconnect to the backend.
+- Added support for the "OogaBooga Text Generation WebUI" API.
+- Fixed multiple generation priority issues.
