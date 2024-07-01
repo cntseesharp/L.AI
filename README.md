@@ -1,7 +1,7 @@
 # L.AI
 
 TL;DR: Host your own AI autocomplete in Visual Studio. 
-#### Only supports KoboldCpp/KoboldAI and OogaBooga, support for other APIs.
+#### Only supports KoboldCpp/KoboldAI and OogaBooga, support for other APIs is not guaranteed, but you can try, if they follow the same scheme as mentioned providers.
 
 Visual Studio plugin that adds functionality to use your own AI suggestion and autocomplete provider.
 The idea came about after trying out several big language models for generating C# code. One of my concerns with AI autocompletion services always was making sure my code wasn't put at risk where others could misuse or leak it. And here is the solution to it.
@@ -104,3 +104,6 @@ When you make a manual generation request and "Use analyzer" is enabled in the o
 - Fixed an issue that prevented the extension to reconnect to the backend.
 - Added support for the "OogaBooga Text Generation WebUI" API.
 - Fixed multiple generation priority issues.
+
+### v1.6.1
+- After experimenting with LLaMa 3 it turned out that overflowing context messes up the generation beyond imaginable. The context that's sent in the generation request is now adjusted to fit in the context length.
