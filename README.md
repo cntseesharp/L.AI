@@ -106,4 +106,8 @@ When you make a manual generation request and "Use analyzer" is enabled in the o
 - Fixed multiple generation priority issues.
 
 ### v1.6.1
-- After experimenting with LLaMa 3 it turned out that overflowing context messes up the generation beyond imaginable. The context that's sent in the generation request is now adjusted to fit in the context length.
+- After experimenting with LLaMa 3 it turned out that overflowing context messes up the generation beyond imaginable. The context that's sent in the generation request has now been adjusted to fit the context length.
+
+### v1.6.2
+- Fixed a disgusting issue that was overriding Context Length.
+- Fixed an issue that broke the generation pipeline.
