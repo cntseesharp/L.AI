@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="LAI.428f68f8-12a4-4827-853d-d492256d9a36" Version="1.6.2" Language="en-US" Publisher="Maksym Kostohlodov" />
+        <DisplayName>L.AI</DisplayName>
+        <Description xml:space="preserve">Visual Studio plugin for your own AI autocompletion. Please, check out the installation guide.</Description>
+        <GettingStartedGuide>https://github.com/cntseesharp/L.AI</GettingStartedGuide>
+        <ReleaseNotes>https://github.com/cntseesharp/L.AI</ReleaseNotes>
+        <Icon>logo.png</Icon>
+        <Tags>AI, Autocomplete, C#, Code Generation, Code Prediction, Code Snippets, Coding Accelerator, Coding Assistant, Developer Tools, IntelliCode, IntelliSense, LLM, Machine Learning, ML, Productivity, Suggestions</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Community">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Pro">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Enterprise">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7.2,)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="visual studio Core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
+</PackageManifest>
+<!--
+    Please add the following element to PackageManifest\\Assets:
+    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+-->

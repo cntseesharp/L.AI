@@ -1,0 +1,403 @@
+﻿<PlatformUI:DialogWindow  
+    x:Class="L_AI.UI.FirstSetup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
+    xmlns:PlatformUI="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+    xmlns:converters="clr-namespace:L_AI.UI.ToolWindows.Converters" 
+    xmlns:viewmodels="clr-namespace:L_AI.UI.ToolWindows.ViewModels" 
+    toolkit:Themes.UseVsTheme="True"
+    Height="810"
+    Width="1440"
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize"
+    Topmost="True"
+    Background="{DynamicResource {x:Static PlatformUI:ThemedDialogColors.WindowPanelBrushKey}}">
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            CaptionHeight="30"
+            CornerRadius="0"
+            GlassFrameThickness="0"
+            ResizeBorderThickness="5"
+            NonClientFrameEdges="None"/>
+    </WindowChrome.WindowChrome>
+    <PlatformUI:DialogWindow.Template>
+        <ControlTemplate TargetType="Window">
+            <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
+                    BorderThickness="1">
+                <ContentPresenter/>
+            </Border>
+        </ControlTemplate>
+    </PlatformUI:DialogWindow.Template>
+    <PlatformUI:DialogWindow.Resources>
+        <ResourceDictionary>
+            <converters:IndexToVisibilityConverter x:Key="indexToVisibility"/>
+            <Style TargetType="Button" x:Key="imageButton">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Height" Value="560" />
+                <Setter Property="Width" Value="570" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#44FFFFFF" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="{x:Null}" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                    <Trigger Property="IsDefault" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#88A0CEFF" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="{x:Null}" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="Grid">
+                <Style.Triggers>
+                    <Trigger Property="Visibility" Value="Visible">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                    <Trigger Property="Visibility" Value="Hidden">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="step1ErrorMessage" TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ConnectionStatus}" Value="{x:Static viewmodels:ConnectionStatusEnum.Failure}">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="step1Label" TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ConnectionStatus}" Value="{x:Static viewmodels:ConnectionStatusEnum.Success}">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="step1ProgressBar" TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsBusy}" Value="True">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="step1Button" TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ShouldShowButton}" Value="False">
+                        <Setter Property="IsHitTestVisible" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ShouldShowButton}" Value="True">
+                        <Setter Property="IsHitTestVisible" Value="True"/>
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </PlatformUI:DialogWindow.Resources>
+
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- First Page -->
+        <Grid Grid.Row="0" Margin="8" x:Name="firstPage" Visibility="{Binding CurrentStep, Converter={StaticResource indexToVisibility}, ConverterParameter=0}">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="Image">
+                        <Setter Property="Height" Value="530" />
+                        <Setter Property="Width" Value="540" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="Stretch" Value="Fill" />
+                    </Style>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="1" Content="Let's set up your AI connection." FontSize="22" HorizontalAlignment="Center" Margin="0 30 0 0" Padding="0" />
+            <Label Grid.Row="2" Content="What text generation provider are you using?" FontSize="18" HorizontalAlignment="Center" Padding="0" Margin="0" />
+            <Grid Grid.Row="3" Height="600" HorizontalAlignment="Center" Margin="0 24 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="600"/>
+                    <ColumnDefinition Width="600"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
+                    <Button Command="{Binding SelectKoboldCommand}" IsDefault="{Binding IsKobold}" Style="{StaticResource imageButton}">
+                        <Image Source="pack://application:,,,/L.AI;component/Resources/koboldcpp.png" />
+                    </Button>
+                    <Viewbox Height="35">
+                        <RadioButton GroupName="textGen" IsChecked="{Binding IsKobold}" HorizontalAlignment="Center" VerticalContentAlignment="Center">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 2">
+                                    <Label Content="KoboldCpp / KoboldAI" FontSize="14" />
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Hyperlink NavigateUri="https://github.com/LostRuins/koboldcpp" FontSize="12" RequestNavigate="Hyperlink_RequestNavigate">
+                                    (github)
+                                </Hyperlink>
+                                    </TextBlock>
+                                </StackPanel>
+                            </RadioButton.Content>
+                            <RadioButton.RenderTransform>
+                                <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                            </RadioButton.RenderTransform>
+                        </RadioButton>
+                    </Viewbox>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
+
+                    <Button Command="{Binding SelectOogaCommand}" IsDefault="{Binding IsOoga}" Style="{StaticResource imageButton}">
+                        <Image Source="pack://application:,,,/L.AI;component/Resources/oogabooga.png" />
+                    </Button>
+                    <Viewbox Height="35">
+                        <RadioButton GroupName="textGen" IsChecked="{Binding IsOoga}" HorizontalAlignment="Center" VerticalContentAlignment="Center">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 2">
+                                    <Label Content="Oogabooga Text Generation Web UI" FontSize="15" />
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Hyperlink NavigateUri="https://github.com/oobabooga/text-generation-webui" FontSize="12" RequestNavigate="Hyperlink_RequestNavigate">
+                                    (github)
+                                </Hyperlink>
+                                    </TextBlock>
+                                </StackPanel>
+                            </RadioButton.Content>
+                            <RadioButton.RenderTransform>
+                                <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                            </RadioButton.RenderTransform>
+                        </RadioButton>
+                    </Viewbox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <!-- Second Page -->
+        <Grid Visibility="{Binding CurrentStep, Converter={StaticResource indexToVisibility}, ConverterParameter=1}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="API Endpoint" FontSize="14" VerticalAlignment="Center" Padding="0" />
+                    <TextBox Grid.Column="1" Text="{Binding Options.ApiBaseEndpoint}" Margin="0 8 0 0" />
+                    <TextBlock Margin="30 0 0 0" TextWrapping="WrapWithOverflow" Grid.Row="1" Grid.ColumnSpan="2" FontSize="13" Foreground="#999" 
+                               Text="URL of your text generation API." />
+                </Grid>
+
+                <Grid Margin="0 12 0 0">
+                    <Grid Style="{StaticResource step1ProgressBar}" Opacity="0" VerticalAlignment="Center">
+                        <ProgressBar IsIndeterminate="True" Width="300" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Style="{StaticResource step1Label}" Opacity="0" VerticalAlignment="Center">
+                        <Label Content="You're succesfully connected to the API! You can continue configuration." FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 -2 0 0"/>
+                    </Grid>
+
+                    <Grid Style="{StaticResource step1Button}" VerticalAlignment="Center">
+                            <Button Content="Test connection" Command="{Binding TestConnectionCommand}" VerticalAlignment="Center"/>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Style="{StaticResource step1ErrorMessage}" Margin="0 12 0 0" HorizontalAlignment="Center" Opacity="0">
+                    <TextBlock Text="Connection failed. Check API address, port and selected generation provider." FontSize="16" FontFamily="Helvetica" Foreground="#E51227"/>
+                </Grid>
+                <!--<Border BorderThickness="0 1 0 0" BorderBrush="#999" Padding="20 0 20 10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="API Endpoint" FontSize="14" VerticalAlignment="Center" Padding="0" />
+                        <TextBox Grid.Column="1" Text="{Binding Options.ApiBaseEndpoint}" Margin="0 8 0 0" />
+                        <TextBlock Margin="30 0 0 0" TextWrapping="WrapWithOverflow" Grid.Row="1" Grid.ColumnSpan="2" FontSize="13" Foreground="#999" 
+               Text="URL of your text generation API." />
+                    </Grid>
+                </Border>-->
+            </StackPanel>
+        </Grid>
+        <!-- Logo -->
+        <StackPanel Orientation="Horizontal" Margin="12" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <WrapPanel Height="70" Width="70" Name ="container">
+                <Image ClipToBounds="True" Source="pack://application:,,,/L.AI;component/logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="70" />
+                <WrapPanel.OpacityMask>
+                    <VisualBrush >
+                        <VisualBrush.Visual>
+                            <Border Height="{Binding ElementName=container, Path=ActualHeight}" Width="{Binding ElementName=container, Path=ActualWidth}" Background="Black" CornerRadius="35" />
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </WrapPanel.OpacityMask>
+            </WrapPanel>
+            <Label Content="L.AI" VerticalAlignment="Center" FontSize="30" FontFamily="Helvetica" Margin="12 3 0 0" Padding="0" />
+        </StackPanel>
+        <!-- Bottom Navigation -->
+        <Grid Grid.Row="1" Margin="8" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Skip configuration" Height="25" Width="125" Click="Skip_Clicked" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+            <Label Grid.Column="1" Content="Warning! All L.AI settings were reset to default values." FontSize="17" FontFamily="Helvetica" Foreground="#E51227" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Button Content="Go Back" Height="25" Width="125" IsEnabled="{Binding CanNavigateBack}" Command="{Binding GoBackCommand}" Margin="0 0 8 0" />
+                <Button Content="Continue" Height="25" Width="125" IsEnabled="{Binding CanNavigate}" Command="{Binding ContinueCommand}" />
+            </StackPanel>
+        </Grid>
+        <!-- Close Dialog -->
+        <Grid x:Name="closeDialog" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#66000000" IsHitTestVisible="True" Grid.RowSpan="222" Grid.ColumnSpan="21231">
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" BorderThickness="2" BorderBrush="{DynamicResource {x:Static PlatformUI:ThemedDialogColors.WindowBorderBrushKey}}">
+                <Grid Height="120" Width="400" Background="{DynamicResource {x:Static PlatformUI:ThemedDialogColors.WindowPanelBrushKey}}">
+                    <Grid Margin="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.ColumnSpan="22" Grid.Row="1" Content="Do you really wish to skip the configuration process?" HorizontalAlignment="Center" FontSize="14" />
+                        <Button Grid.Row="3" Grid.Column="0" Content="No, keep configuring." Height="25" Click="Continue_Clicked" Margin="4 4 8 4" HorizontalAlignment="Stretch" />
+                        <Button Grid.Row="3" Grid.Column="1" Content="Yes, close." Height="25" Click="ConfirmClose_Clicked" Margin="8 4 4 4" HorizontalAlignment="Stretch" />
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</PlatformUI:DialogWindow>
