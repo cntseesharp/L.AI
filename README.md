@@ -111,3 +111,6 @@ When you make a manual generation request and "Use analyzer" is enabled in the o
 ### v1.6.2
 - Fixed a disgusting issue that was overriding Context Length.
 - Fixed an issue that broke the generation pipeline.
+
+### v1.6.2 - R
+- Released source code.
