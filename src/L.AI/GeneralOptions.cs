@@ -10,7 +10,7 @@ namespace L_AI.Options
     internal class GeneralOptions : OptionsBaseModel<GeneralOptions>
     {
         private static GeneralOptions _settingsInstance;
-        public static GeneralOptions Instance => _settingsInstance ?? (_settingsInstance = GeneralOptions.GetLiveInstanceAsync().Result);
+        public static GeneralOptions Instance => _settingsInstance ?? (_settingsInstance = OptionsBaseModel<GeneralOptions>.Instance);
 
         [Category("Generation")]
         [DisplayName("AI Endpoint")]

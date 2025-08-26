@@ -14,7 +14,14 @@ namespace LocalLlmAutocomplete.VisualStudioSuggestions
     {
         public static ProposalCollection CollectionFromText(string gen, ITextView textView, int position)
         {
-            var point = new VirtualSnapshotPoint(textView.TextSnapshot, position);
+            if (string.IsNullOrEmpty(gen))
+            {
+                return new ProposalCollection("L.AI", new List<Proposal>());
+            }
+
+            var snapshot = textView.TextSnapshot;
+            var safePosition = Math.Max(0, Math.Min(position, snapshot.Length));
+            var point = new VirtualSnapshotPoint(snapshot, safePosition);
             var snap = new SnapshotSpan(point.Position, 0);
             var edit = new ProposedEdit(snap, gen);
             var edits = new List<ProposedEdit> { edit };

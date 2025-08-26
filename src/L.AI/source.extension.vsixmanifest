@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="LAI.428f68f8-12a4-4827-853d-d492256d9a36" Version="1.6.2" Language="en-US" Publisher="Maksym Kostohlodov" />
+        <Identity Id="LAI.428f68f8-12a4-4827-853d-d492256d9a36" Version="1.7.1" Language="en-US" Publisher="Maksym Kostohlodov" />
         <DisplayName>L.AI</DisplayName>
         <Description xml:space="preserve">Visual Studio plugin for your own AI autocompletion. Please, check out the installation guide.</Description>
         <GettingStartedGuide>https://github.com/cntseesharp/L.AI</GettingStartedGuide>
